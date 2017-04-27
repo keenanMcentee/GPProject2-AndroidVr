@@ -72,6 +72,7 @@ Cube::Cube(float size) :
         -1,  1,  1,
 
     }
+		
 
 {
 
@@ -81,6 +82,8 @@ void Cube::draw() const
 {
     glPushMatrix();
 
+	glRotatef(rotationAngle, 0, 1, 1);
+		
     glScalef(size, size, size);
 
     glColor4f(1.0,1.0,1.0,1.0);
@@ -102,6 +105,7 @@ void Cube::draw() const
     glVertexPointer(3, GL_FLOAT, 0, &face3[0]);
     glDrawArrays(GL_TRIANGLES, 0, face3.size() / 3);
 
+	
     glDisableClientState(GL_VERTEX_ARRAY);
 
     glPopMatrix();
@@ -110,5 +114,9 @@ void Cube::draw() const
 
 void Cube::update(float time)
 {
-
+rotationAngle += 0.5f;
+if (rotationAngle <= 360)
+		{
+			rotationAngle -= 360;
+		}
 }

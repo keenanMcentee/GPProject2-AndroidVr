@@ -26,6 +26,8 @@ class Cube
         std::array<float, 36> face1;
         std::array<float, 36> face2;
         std::array<float, 36> face3;
+		
+		float rotationAngle = 0;
 };
 
 #endif // CUBE_HPP

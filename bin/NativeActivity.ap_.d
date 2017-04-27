@@ -11,4 +11,5 @@ C:\Users\keena\Desktop\ANDROID GAME\SFML\examples\android\bin\res\drawable-mdpi\
 C:\Users\keena\Desktop\ANDROID GAME\SFML\examples\android\bin\res\drawable-xhdpi\sfml_logo.png \
 C:\Users\keena\Desktop\ANDROID GAME\SFML\examples\android\bin\res\drawable-xxhdpi\sfml_logo.png \
 C:\Users\keena\Desktop\ANDROID GAME\SFML\examples\android\assets\sansation.ttf \
+C:\Users\keena\Desktop\ANDROID GAME\SFML\examples\android\assets\texture.jpg \
 C:\Users\keena\Desktop\ANDROID GAME\SFML\examples\android\bin\AndroidManifest.xml \

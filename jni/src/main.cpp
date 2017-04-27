@@ -15,15 +15,22 @@ sf::Font b;
 float startingRotation;
 float rotationAngle;
 float lookingAngle;
+
+std::array<float, 18> plane;
 int main(int argc, char *argv[])
+	
 {
+	plane = {
+		-5, 2 ,5 ,
+		5, 2 , 5 ,
+		5, 2 , -5,
+		
+		5, 2, -5 ,
+		-5, 2, -5,
+		-5, 2 , 5,
+	};
 	sf::Sensor::setEnabled(sf::Sensor::Orientation,true);
 	startingRotation = sf::Sensor::getValue(sf::Sensor::Orientation).x;
-	b.loadFromFile("sansation.ttf");
-	a.setFont(b);
-	a.setString("Hi"); 
-	a.setPosition(100, 100);
-	a.setCharacterSize(50);
 
     sf::ContextSettings settings{24, 8, 0, 1, 1};
     sf::RenderWindow window(sf::VideoMode::getDesktopMode(), "", sf::Style::Default, settings);
@@ -123,7 +130,7 @@ int main(int argc, char *argv[])
 		}
         // Update
         cube.update(20);
-		rotationAngle += 0.5f;
+		
         // Draw
         window.clear(sf::Color::Black);
 		
@@ -131,19 +138,33 @@ int main(int argc, char *argv[])
 		
 		glMatrixMode(GL_MODELVIEW);
 
+		glPushMatrix();
+		glEnableClientState(GL_VERTEX_ARRAY);
+		//Plane
+		glColor4f(1.0,1.0,1.0,1.0);
+		glVertexPointer(3, GL_FLOAT, 0 , &plane[0]);
+		glDrawArrays(GL_TRIANGLES, 0 , plane.size() / 3);
+		glDisableClientState(GL_VERTEX_ARRAY);
+		glPopMatrix();
 		
         glLoadIdentity();
 		glRotatef(lookingAngle, 0, 1, 0);
 		glTranslatef(0,0,2);
-		glRotatef(rotationAngle, 0, 1, 1);
-		if (rotationAngle <= 360)
-		{
-			rotationAngle -= 360;
-		}
+		
 		glViewport(0, 0, window.getSize().y/2, window.getSize().x);
 
         cube.draw();
+		
+		
 		glFlush();
+		glPushMatrix();
+		glEnableClientState(GL_VERTEX_ARRAY);
+		//Plane
+		glColor4f(1.0,1.0,0.0,1.0);
+		glVertexPointer(3, GL_FLOAT, 0 , &plane[0]);
+		glDrawArrays(GL_TRIANGLES, 0 , plane.size() / 3);
+		glDisableClientState(GL_VERTEX_ARRAY);
+		glPopMatrix();
 		glViewport(window.getSize().y/2, 0, window.getSize().y/2, window.getSize().x);
         //glTranslatef(0,0,1);
         cube.draw();
