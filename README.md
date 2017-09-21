@@ -13,3 +13,6 @@ Then, simply typing `make` at the root of the repository should compile it.
 
 If the developper's mode is enabled on your device, typing `make deploy` should
 push the application to your device.
+----------------------------------------------------------------------------------------------------
+# ALTERNATE INSTALATION
+You can also manually install the NativeActivity-debug.apk on your Android device.
